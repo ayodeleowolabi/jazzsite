@@ -1,0 +1,159 @@
+.page { padding-top: var(--nav-height); }
+
+/* ── DOWNLOADS — top of page ── */
+.downloadsSection {
+  margin-bottom: 5rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.colLabel {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.downloads {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.dlItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  background: none;
+  width: 100%;
+  text-align: center;
+  color: var(--cream);
+  transition: all 0.3s;
+}
+
+.dlItem:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.dlIcon {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.dlItem:hover .dlIcon { border-color: var(--gold); }
+
+.dlMeta { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.dlName {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+
+.dlDesc {
+  font-size: 0.75rem;
+  color: var(--warm-gray);
+  font-style: italic;
+}
+
+/* ── PRESS CARDS ── */
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.card:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardCategory {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.cardPublication {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+}
+
+.cardQuote {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: var(--cream);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
+}
+
+.cardContext {
+  font-size: 0.82rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.cardLink {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.cardLink:hover {
+  border-color: var(--gold);
+  color: var(--ivory);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .downloads { grid-template-columns: 1fr 1fr; }
+  .card { padding: 3rem 1.5rem; }
+}
+
+@media (max-width: 500px) {
+  .downloads { grid-template-columns: 1fr; }
+}

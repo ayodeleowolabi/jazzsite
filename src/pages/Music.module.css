@@ -1,0 +1,88 @@
+.page { padding-top: var(--nav-height); }
+
+.albumGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.cover {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 20px 80px rgba(0,0,0,0.6),
+    0 0 120px rgba(201,168,76,0.08);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.albumEyebrow {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.albumTitle {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--ivory);
+  margin-bottom: 0.25rem;
+}
+
+.albumSub {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.narrative {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  max-width: 520px;
+}
+
+.narrative em { font-style: italic; }
+
+.comingSoon {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.comingSoonText {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--warm-gray);
+}
+
+@media (max-width: 768px) {
+  .albumGrid { grid-template-columns: 1fr; gap: 3rem; }
+  .cover { max-width: 260px; }
+}

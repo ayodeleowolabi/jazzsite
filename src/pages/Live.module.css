@@ -1,0 +1,76 @@
+.page { padding-top: var(--nav-height); }
+
+.dateList { display: flex; flex-direction: column; }
+
+.dateRow {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left 0.3s;
+}
+
+.dateRow:first-child { border-top: 1px solid var(--border); }
+.dateRow:hover { padding-left: 0.5rem; }
+
+.date {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.venue {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--ivory);
+}
+
+.location {
+  font-size: 0.88rem;
+  color: var(--warm-gray);
+  font-style: italic;
+}
+
+.ticket {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.25rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.ticket:hover { border-color: var(--gold); color: var(--gold); }
+.soon { opacity: 0.4; pointer-events: none; }
+
+.bookingCta {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.bookingCta p {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--warm-gray);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .dateRow {
+    grid-template-columns: 80px 1fr;
+    row-gap: 0.4rem;
+  }
+  .location { grid-column: 2; }
+  .ticket   { grid-column: 1 / -1; width: fit-content; }
+}

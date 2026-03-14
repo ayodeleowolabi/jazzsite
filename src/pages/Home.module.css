@@ -1,0 +1,262 @@
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% center;
+  filter: brightness(1.15) contrast(1.1) saturate(1.1);
+  z-index: 0;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(10,9,6,0.2) 0%, rgba(10,9,6,0.0) 30%, rgba(10,9,6,0.6) 70%, rgba(10,9,6,1) 100%),
+    linear-gradient(to left, rgba(10,9,6,0.55) 0%, transparent 55%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem 6rem 2rem;
+  max-width: 700px;
+  text-align: right;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.heroName {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease 0.4s both;
+  white-space: nowrap;
+}
+
+.heroName em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.tagline {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.heroCta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── ALBUM STRIP ── */
+.albumStrip {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.stripCover {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 0 60px rgba(201,168,76,0.12);
+}
+
+.stripEyebrow {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.stripTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--ivory);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.stripSub {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--warm-gray);
+  margin-bottom: 1.5rem;
+}
+
+/* ── EMAIL ── */
+.emailSection {
+  background: var(--black);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ornament {
+  color: var(--gold);
+  opacity: 0.4;
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  margin-bottom: 2rem;
+}
+
+.emailHeading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--ivory);
+  margin-bottom: 0.75rem;
+}
+
+.emailSub {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--warm-gray);
+  margin-bottom: 2.5rem;
+  max-width: 380px;
+}
+
+.emailForm {
+  display: flex;
+  max-width: 460px;
+  width: 100%;
+}
+
+.emailInput {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-right: none;
+  padding: 0.9rem 1.5rem;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.emailInput::placeholder { color: var(--warm-gray); }
+.emailInput:focus { border-color: var(--gold); }
+
+.emailBtn {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.emailBtn:hover {
+  background: var(--ivory);
+  border-color: var(--ivory);
+}
+
+.emailConfirm {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .heroImg      { object-position: 25% center; }
+  .heroContent  { padding: 0 1.5rem 4rem; text-align: left; margin-left: 0; }
+  .heroLine     { display: none; }
+  .eyebrow      { justify-content: flex-start; }
+  .eyebrow::after  { display: none; }
+  .eyebrow::before { display: block; }
+  .heroCta      { justify-content: flex-start; flex-wrap: wrap; gap: 0.75rem; }
+  .btn-primary  { white-space: nowrap; width: 100%; text-align: center; }
+  .btn-ghost    { white-space: nowrap; width: 100%; text-align: center; }
+  .albumStrip   { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; }
+  .emailSection { padding: 5rem 1.5rem; }
+  .emailForm    { flex-direction: column; }
+  .emailInput   { border-right: 1px solid var(--border); border-bottom: none; }
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .eyebrow {
+    justify-content: flex-end;
+  }
+}
+
+.hero {
+  margin-left: calc(-1 * 0px);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
