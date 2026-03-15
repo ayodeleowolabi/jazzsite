@@ -35,6 +35,9 @@ export default function Home() {
 
           </div>
         </div>
+        <p className={styles.photoCredit}>
+  Photo: Alberto Roman — Ubeda Jazz Festival
+</p>
       </section>
 
       {/* ── ALBUM STRIP ── */}
