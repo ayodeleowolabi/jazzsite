@@ -25,7 +25,8 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  return (
+ return (
+  <>
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <Link to="/" className={styles.logo} onClick={() => setOpen(false)}>
         Ayodele Owolabi
@@ -53,22 +54,31 @@ export default function Navbar() {
       >
         <span /><span /><span />
       </button>
-
-      <div className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`}>
-        <ul className={styles.drawerLinks}>
-          {links.map(({ to, label }) => (
-            <li key={to}>
-              <NavLink
-                to={to}
-                className={styles.drawerLink}
-                onClick={() => setOpen(false)}
-              >
-                {label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
     </nav>
-  )
+
+    {/* Drawer is outside nav so it can cover full screen */}
+    <div className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`}>
+      <button
+        className={`${styles.hamburger} ${styles.hamburgerOpen} ${styles.drawerClose}`}
+        onClick={() => setOpen(false)}
+        aria-label="Close menu"
+      >
+        <span /><span /><span />
+      </button>
+      <ul className={styles.drawerLinks}>
+        {links.map(({ to, label }) => (
+          <li key={to}>
+            <NavLink
+              to={to}
+              className={styles.drawerLink}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </>
+)
 }
