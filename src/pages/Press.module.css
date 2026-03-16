@@ -152,6 +152,9 @@
 @media (max-width: 768px) {
   .downloads { grid-template-columns: 1fr 1fr; }
   .card { padding: 3rem 1.5rem; }
+  .downloads { grid-template-columns: 1fr 1fr; }
+  .dlItem { padding: 1.25rem 1rem; }
+  .card { padding: 3rem 1.5rem; }
 }
 
 @media (max-width: 500px) {

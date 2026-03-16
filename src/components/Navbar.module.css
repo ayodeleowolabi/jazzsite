@@ -99,7 +99,6 @@
   pointer-events: none;
   transition: opacity 0.35s ease;
 }
-
 .drawerOpen {
   opacity: 1;
   pointer-events: all;
