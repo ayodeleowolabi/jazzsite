@@ -47,7 +47,7 @@ export default function Home() {
           <h3 className={styles.stripEyebrow}>New Release</h3>
           <h2 className={styles.stripTitle}>Swing, Soul &amp; Samba</h2>
           <p className={styles.stripSub}>A Tribute to Washington, DC</p>
-          <Link to="/music" className="btn-ghost">Listen Now</Link>
+          <Link to="/music" className="btn-ghost">Join the List</Link>
         </div>
       </div>
 
