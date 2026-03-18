@@ -13,7 +13,6 @@ export default function Live() {
     <main className={styles.page}>
       <div className="page-section">
         <div className="section-header">
-          <span className="section-number">03</span>
           <div className="section-rule" />
         </div>
         <h2 className="section-title">Live <em>Dates</em></h2>
@@ -25,7 +24,7 @@ export default function Live() {
               <span className={styles.venue}>{venue}</span>
               <span className={styles.location}>{location}</span>
               <a href={ticketUrl} className={styles.ticket} target="_blank" rel="noreferrer">
-                Tickets
+                TBD
               </a>
             </div>
           )) : (

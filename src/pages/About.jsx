@@ -22,7 +22,6 @@ export default function About() {
       <div className="page-section">
 
         <div className="section-header">
-          <span className="section-number">01</span>
           <div className="section-rule" />
         </div>
 
@@ -41,8 +40,8 @@ export default function About() {
   church, the jazz lineage of Washington, DC, and the rhythmic memory of West Africa.
 </p>
 <p>
-  A graduate of Howard University home to Duke Ellington and Shirley Horn; Owolabi
-  came of age at the center of Black American music. Her studies led her to the Kennedy
+  A graduate of Howard University in Washington DC home to Duke Ellington and Shirley Horn; 
+  Owolabi came of age at the center of Black American music. Her studies led her to the Kennedy
   Center's prestigious Betty Carter Jazz Ahead residency, where she collaborated with
   Jason Moran, Ralph Peterson, and Carmen Lundy. She portrayed Young Ella Fitzgerald
   in the celebrated <em>Ella 100: Live at the Apollo</em> alongside Lizz Wright, Patti
@@ -104,7 +103,7 @@ export default function About() {
           <div className={styles.ytWrap}>
             <iframe
               src="https://www.youtube.com/embed/iJFywCvW344?si=7ugYwMXz4CnfyhJ3"
-              title="Ayodele Owolabi at the Kennedy Center"
+              title="Ayodele Owolabi at Asociación Sevillana de Jazz - Sevilla Spain"
               allowFullScreen
               loading="lazy"
             />

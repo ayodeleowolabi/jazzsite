@@ -19,7 +19,6 @@ export default function Press() {
     <main className={styles.page}>
       <div className="page-section">
         <div className="section-header">
-          <span className="section-number">04</span>
           <div className="section-rule" />
         </div>
         <h2 className="section-title">Press &amp; <em>Media</em></h2>

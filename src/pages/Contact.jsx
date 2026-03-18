@@ -40,7 +40,6 @@ export default function Contact() {
       <div className="page-section">
 
         <div className="section-header">
-          <span className="section-number">05</span>
           <div className="section-rule" />
         </div>
 
