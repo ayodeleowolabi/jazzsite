@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useFadeUp } from '../hooks/useFadeUp'
 import styles from './Contact.module.css'
+import { CityDropdown } from '../components/CityDropdown'
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
+  const [cityInput, setCityInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
   const formRef  = useFadeUp()
   const emailRef = useFadeUp()
@@ -15,25 +17,27 @@ export default function Contact() {
     e.target.reset()
   }
 
-  const handleEmailSignup = async (e) => {
-    e.preventDefault()
-    if (!emailInput) return
+ const handleEmailSignup = async (e) => {
+  e.preventDefault()
+  if (!emailInput || !cityInput) return
 
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScG0CMGRmtIReBV0kA_OZfxBZug79uLdKCWlO8LKcjsRbWvBg/formResponse'
-    const formData = new FormData()
-    formData.append('entry.1743792060', emailInput)
+  const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScG0CMGRmtIReBV0kA_OZfxBZug79uLdKCWlO8LKcjsRbWvBg/formResponse'
+  const formData = new FormData()
+  formData.append('entry.1743792060', emailInput)
+  formData.append('entry.843124905', cityInput)  // ← replace with real ID
 
-    try {
-      await fetch(formUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData,
-      })
-    } catch (err) {}
+  try {
+    await fetch(formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+    })
+  } catch (err) {}
 
-    setEmailSent(true)
-    setEmailInput('')
-  }
+  setEmailSent(true)
+  setEmailInput('')
+  setCityInput('')
+}
 
   return (
     <main className={styles.page}>
@@ -114,17 +118,19 @@ export default function Contact() {
             {emailSent ? (
               <p className={styles.confirm}>You're on the list. Thank you.</p>
             ) : (
-              <form className={styles.emailForm} onSubmit={handleEmailSignup}>
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  required
-                  value={emailInput}
-                  onChange={e => setEmailInput(e.target.value)}
-                  className={styles.emailInput}
-                />
-                <button type="submit" className={styles.emailBtn}>Subscribe</button>
-              </form>
+            <form className={styles.emailForm} onSubmit={handleEmailSignup}>
+  <input
+    type="email"
+    placeholder="Your email address"
+    required
+    value={emailInput}
+    onChange={e => setEmailInput(e.target.value)}
+    className={styles.emailInput}
+  />
+<CityDropdown value={cityInput} onChange={setCityInput} />
+
+  <button type="submit" className={styles.emailBtn}>Subscribe</button>
+</form>
             )}
           </div>
         </div>

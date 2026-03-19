@@ -104,6 +104,11 @@
   margin: 0 auto;
 }
 
+.emailInput select,
+select.emailInput {
+  appearance: none;
+  cursor: pointer;
+}
 .emailSignupTitle {
   font-family: var(--font-display);
   font-weight: 300;

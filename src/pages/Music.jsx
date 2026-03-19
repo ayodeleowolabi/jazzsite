@@ -11,7 +11,7 @@ export default function Music() {
     <main className={styles.page}>
       <div className="page-section">
         <div className="section-header">
-          <span className="section-number">02</span>
+
           <div className="section-rule" />
         </div>
         <h2 className="section-title">The <em>Music</em></h2>
@@ -43,6 +43,15 @@ export default function Music() {
   of the Washington, DC jazz scene. It is a document of place, of lineage, and of an
   artist fully inhabiting her voice.
 </p>
+<blockquote className={styles.pullQuote}>
+  <p>
+    "She finds the core of every song she sings. The clarity of her tone and her message
+    arrive fully voiced on her original composition <em>Freedom</em>. Her work defines
+    the way she and her generation pivot between sonic history and emotional intent.
+    The outcome is Ayo singing the Truth."
+  </p>
+  <cite>— Jason Moran, Artistic Director, Kennedy Center Jazz (2011–2025)</cite>
+</blockquote>
 
             <div className={styles.comingSoon}>
               <p className={styles.comingSoonText}>

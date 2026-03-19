@@ -1,0 +1,79 @@
+.dropdownWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownTrigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+
+  /* Match your emailInput styles exactly */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.dropdownTrigger:focus,
+.dropdownTrigger:hover {
+  border-color: var(--gold);
+}
+
+.dropdownPlaceholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dropdownSelected {
+  color: #fff;
+}
+
+.dropdownArrow {
+  transition: transform 0.2s ease;
+  color: var(--gold);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dropdownArrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #1a1408;
+  border: 1px solid var(--gold);
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  z-index: 100;
+}
+
+.dropdownItem {
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gold);
+}
+
+.dropdownItemActive {
+  color: var(--gold);
+}

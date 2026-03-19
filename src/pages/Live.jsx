@@ -23,9 +23,13 @@ export default function Live() {
               <span className={styles.date}>{date}</span>
               <span className={styles.venue}>{venue}</span>
               <span className={styles.location}>{location}</span>
-              <a href={ticketUrl} className={styles.ticket} target="_blank" rel="noreferrer">
-                TBD
-              </a>
+              {ticketUrl ? (
+  <a href={ticketUrl} className={styles.ticket} target="_blank" rel="noreferrer">
+    Tickets
+  </a>
+) : (
+  <span className={styles.ticket}>TBA</span>
+)}
             </div>
           )) : (
             <div className={styles.dateRow}>
