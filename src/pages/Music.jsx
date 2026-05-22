@@ -57,9 +57,6 @@ export default function Music() {
 </blockquote>
 
             <div className={styles.comingSoon}>
-              <p className={styles.comingSoonText}>
-                Be the first to know when the album drops.
-              </p>
               <Link to="/album" className="btn-primary">
                 Get the Album
               </Link>
