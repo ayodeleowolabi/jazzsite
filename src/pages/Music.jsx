@@ -1,6 +1,5 @@
 import { useFadeUp } from '../hooks/useFadeUp'
 import { Link } from 'react-router-dom'
-import albumCover from '../assets/album-cover.jpg'
 import styles from './Music.module.css'
 
 export default function Music() {
@@ -20,7 +19,7 @@ export default function Music() {
 
           <img
             ref={coverRef}
-            src={albumCover}
+            src="/swing-soul-samba-cover.jpg"
             alt="Swing, Soul & Samba"
             className={`fade-up ${styles.cover}`}
           />
@@ -49,16 +48,20 @@ export default function Music() {
     arrive fully voiced on her original composition <em>Freedom</em>. Her work defines
     the way she and her generation pivot between sonic history and emotional intent.
     The outcome is Ayo singing the Truth."
+
   </p>
-  <cite>— Jason Moran, Artistic Director, Kennedy Center Jazz (2011–2025)</cite>
+  <cite>— Jason Moran, Artistic Director, Kennedy Center Jazz (2011–2025)</cite>  <br/>  <br/>
+  
+
+  <p>The album closes with a gift: Freedom, an original composition by me. Written in response to the weight of these times, broken families, silenced communities, children carrying pain they were never meant to hold, Freedom is a prayer and a demand in equal measure. Where the rest of this album looks back to honor what DC has given the world, Freedom looks directly at the world as it is right now and refuses to look away. It demands what we all deserve. Freedom.</p>
 </blockquote>
 
             <div className={styles.comingSoon}>
               <p className={styles.comingSoonText}>
                 Be the first to know when the album drops.
               </p>
-              <Link to="/contact#join" className="btn-primary">
-                Join the List
+              <Link to="/album" className="btn-primary">
+                Get the Album
               </Link>
             </div>
 
