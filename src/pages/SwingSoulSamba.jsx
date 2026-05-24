@@ -4,12 +4,14 @@ const ACCESS_CODE = "DCMUSIC";
 const R2_BASE = "https://pub-0220304f67b944c48a04efc83576ba6b.r2.dev";
 
 const TRACKS = [
-  { num: "1", name: "Mama He Treats Your Daughter Mean", dur: "6:11",  file: "01.mp3", arranged: true },
-  { num: "2", name: "One Note Samba",                   dur: "10:30", file: "02.mp3", arranged: true },
-  { num: "3", name: "Hi De Ho",                         dur: "3:54",  file: "03.mp3", arranged: true },
-  { num: "4", name: "Desafinado",                       dur: "9:13",  file: "04.mp3", arranged: true },
-  { num: "5", name: "Come Sunday",                      dur: "6:46",  file: "05.mp3", arranged: false },
-  { num: "6", name: "Freedom", dur: "3:54", file: "06.mp3", arranged: false, original: true },];
+  { num: "1", name: "The Introduction",                  dur: "0:33",  file: "01%20-%20The%20Introduction.mp3",                  arranged: false },
+  { num: "2", name: "Mama He Treats Your Daughter Mean", dur: "5:35",  file: "02%20-%20Mama%20He%20Treats%20Your%20Daughter%20Mean.mp3", arranged: true  },
+  { num: "3", name: "One Note Samba",                    dur: "10:19", file: "03%20-%20One%20Note%20Samba.mp3",                    arranged: true  },
+  { num: "4", name: "Hi Hi Hi (The Crazy Song)",         dur: "3:11",  file: "04%20-%20Hi%20Hi%20(The%20Crazy%20Song).mp3",        arranged: true  },
+  { num: "5", name: "Desafinado",                        dur: "9:13",  file: "05%20-%20Desafinado.mp3",                            arranged: true  },
+  { num: "6", name: "Come Sunday",                       dur: "6:37",  file: "06%20-%20Come%20Sunday.mp3",                         arranged: false },
+  { num: "7", name: "Freedom: Epilogue",                 dur: "7:47",  file: "07%20-%20Freedom.mp3",                               arranged: false, original: true },
+];
 
 const CREDITS = [
   { name: "Ayodele Owolabi",               role: "Vocals" },
@@ -316,7 +318,7 @@ export default function SwingSoulSamba() {
                       minWidth: "18px", textAlign: "right",
                       fontFamily: "'Playfair Display', Georgia, serif",
                     }}>
-                      {isThisPlaying ? "▶" : isActive ? "❙❙" : track.num}
+                      {isThisPlaying ? "❙❙" : isActive ? "▶" : track.num}
                     </span>
                  <span style={{ flex: 1, fontSize: "1rem", color: isActive ? cream : "rgba(245,239,224,0.8)",
   fontFamily: "'Playfair Display', Georgia, serif", fontStyle: isActive ? "italic" : "normal",
@@ -427,7 +429,7 @@ export default function SwingSoulSamba() {
             <div style={{ marginBottom: "2rem", display: "flex", flexDirection: "column", gap: "0.85rem" }}>
               {[
                 ["I",   "Click Download Album below. The zip file will save to your device."],
-                ["II",  "Open the zip. You'll find 6 tracks numbered 01–06."],
+                ["II",  "Open the zip. You'll find 6 tracks numbered 01–07."],
                 ["III", "Mac: double-click the zip → drag into Apple Music. Windows: right-click → Extract All → drag into library."],
                 ["IV",  "Track names, artwork, and album info are embedded and will appear automatically."],
               ].map(([num, text]) => (
@@ -466,7 +468,7 @@ export default function SwingSoulSamba() {
           display: "flex", alignItems: "center", gap: "12px", zIndex: 100,
         }}>
           <img
-            src="/swing-cover.jpg"
+            src="/swing-soul-samba-cover.jpg"
             alt="Swing Soul Samba"
             style={{ width: "38px", height: "38px", objectFit: "cover", flexShrink: 0, border: `0.5px solid ${borderColor}` }}
           />
@@ -499,7 +501,7 @@ export default function SwingSoulSamba() {
                 fontSize: "0.65rem", color: darkBg, flexShrink: 0,
               }}
             >
-              {isPlaying ? "❙❙" : "▶"}
+             {isPlaying ? "❙❙" : "▶"}
             </button>
             <button
               onClick={handleNext}
