@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
 
+
 const ACCESS_CODE = "DCMUSIC";
 const R2_BASE = "https://pub-0220304f67b944c48a04efc83576ba6b.r2.dev";
+
+
 
 const TRACKS = [
   { num: "1", name: "The Introduction",                  dur: "0:33",  file: "01%20-%20The%20Introduction.mp3",                  arranged: false },
@@ -14,7 +17,7 @@ const TRACKS = [
 ];
 
 const CREDITS = [
-  { name: "Ayodele Owolabi",               role: "Vocals" },
+  { name: "Ayodele Owolabi (iothesinger)",   role: "Vocals" },
   { name: "Bohemian Caverns Jazz Orchestra", role: "Live Orchestra" },
   { name: "Elijah Balbed",                 role: "Big Band Arrangements (tracks 1–4)" },
   { name: "Thunder & Lightning LLC",       role: "Live Sound · Maryland" },
@@ -25,19 +28,23 @@ const CREDITS = [
 const LINER_NOTES = [
   {
     artist: "Duke Ellington",
-    note: "DC's most famous musical son, born 1899 near U Street's 'Black Broadway.' Composer, bandleader, global ambassador — over five hundred compositions, beyond category. His name lives on across DC: the Duke Ellington School of Music, the Duke Ellington Bridge, and the murals of a city that never forgot him. 'Come Sunday' is an Ellington composition, recorded with Mahalia Jackson in 1958.",
+    noteEN: "DC's most famous musical son, born 1899 near U Street's 'Black Broadway.' Composer, bandleader, global ambassador — over five hundred compositions, beyond category. His name lives on across DC: the Duke Ellington School of Music, the Duke Ellington Bridge, and the murals of a city that never forgot him. 'Come Sunday' is an Ellington composition, recorded with Mahalia Jackson in 1958.",
+    noteES: "El hijo musical más famoso de DC, nacido en 1899 cerca de la U Street, conocida como el 'Broadway Negro.El hijo musical más famoso de DC, nacido en 1899 cerca de la U Street, conocida como el 'Broadway Negro.' Compositor, director de orquesta, embajador mundial — más de quinientas composiciones, más allá de toda categoría. Su nombre pervive en toda la ciudad: la Escuela de Música Duke Ellington, el Puente Duke Ellington, y los murales de una ciudad que jamás lo olvidó. 'Come Sunday' es una composición de Ellington, grabada junto a Mahalia Jackson en 1958.",
   },
   {
     artist: "Blanche Calloway",
-    note: "Raised alongside Cab Calloway in Baltimore, Blanche led her own touring big-band — reputed to be the first woman ever to front an all-male jazz orchestra. The Joy Boys ranked Top 10 US bands in 1933. After WWII she managed the legendary Bohemian Caverns on U Street, where she discovered Ruth Brown and invited Atlantic Records founder Ahmet Ertegun to hear her sing. What a woman.",
+    noteEN: "Raised alongside Cab Calloway in Baltimore, Blanche led her own touring big-band — reputed to be the first woman ever to front an all-male jazz orchestra. The Joy Boys ranked Top 10 US bands in 1933. After WWII she managed the legendary Bohemian Caverns on U Street, where she discovered Ruth Brown and invited Atlantic Records founder Ahmet Ertegun to hear her sing. What a woman.",
+    noteES: "Crecida junto a Cab Calloway en Baltimore, Blanche lideró su propia banda de gira — reputada como la primera mujer en dirigir una orquesta de jazz masculina. Los Joy Boys se clasificaron en el top 10 de las bandas estadounidenses en 1933. Después de la Segunda Guerra Mundial, gestionó los legendarios Bohemian Caverns en U Street, donde descubrió a Ruth Brown y invitó al fundador de Atlantic Records, Ahmet Ertegun, para escucharla cantar. Qué mujer.",
   },
   {
     artist: "Ruth Brown",
-    note: "Left stranded in a Howard Theater alleyway as a teenager after being fired mid-tour, Ruth was found by a patron of Frank Holiday's Pool Hall and introduced to Blanche Calloway. Calloway gave her a room and a gig. Atlantic Records followed. Sixteen chart hits between 1949–55. People called Atlantic 'The Label Ruth Brown Built.' Her pianist was a young Ray Charles.",
+    noteEN: "Left stranded in a Howard Theater alleyway as a teenager after being fired mid-tour, Ruth was found by a patron of Frank Holiday's Pool Hall and introduced to Blanche Calloway. Calloway gave her a room and a gig. Atlantic Records followed. Sixteen chart hits between 1949–55. People called Atlantic 'The Label Ruth Brown Built.' Her pianist was a young Ray Charles.",
+    noteES: "Dejada varada en un callejón del teatro Howard como adolescente después de ser despedida durante un recorrido, Ruth fue encontrada por un cliente del billar de Frank Holiday y presentada a Blanche Calloway. Calloway le dio una habitación y un trabajo. Siguió con Atlantic Records. Dieciséis éxitos en las listas entre 1949–55. La gente llamaba a Atlantic 'La Sello que Ruth Brown Construyó.' Su pianista era un joven Ray Charles.",
   },
   {
     artist: "Charlie Byrd",
-    note: "A guitarist from deepest Virginia who brought bossa nova to the American mainstream. His Jazz Samba album — recorded with Stan Getz in three hours, three microphones, to a reel-to-reel in a church corridor — launched a global craze. That church was All Souls Unitarian, the same venue where Ayo recorded this album in 2022, honoring the 60th anniversary of Jazz Samba.",
+    noteEN: "A guitarist from deepest Virginia who brought bossa nova to the American mainstream. His Jazz Samba album — recorded with Stan Getz in three hours, three microphones, to a reel-to-reel in a church corridor — launched a global craze. That church was All Souls Unitarian, the same venue where Ayo recorded this album in 2022, honoring the 60th anniversary of Jazz Samba.",
+    noteES: "Un guitarrista de la región más profunda de Virginia que trajo el bossa nova al mainstream estadounidense. Su álbum Jazz Samba — grabado con Stan Getz en tres horas, tres micrófonos, a un cinta magnética en un pasillo de iglesia — lanzó una locura global. Esa iglesia era All Souls Unitarian, el mismo lugar donde Ayo grabó este álbum en 2022, honrando el aniversario de 60 años de Jazz Samba.",        
   },
 ];
 
@@ -54,6 +61,7 @@ export default function SwingSoulSamba() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [expandedNote, setExpandedNote] = useState(null);
   const audioRef = useRef(null);
+  const [lang, setLang] = useState("en");
 
   function handleSubmit() {
     if (input.trim().toUpperCase() === ACCESS_CODE) {
@@ -213,9 +221,33 @@ export default function SwingSoulSamba() {
               borderBottom: `0.5px solid ${borderColor}`,
               padding: "2rem 0", marginBottom: "2rem",
             }}>
+              {/* Language Toggle */}
+<div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
+  {["en", "es"].map((l) => (
+    <button
+      key={l}
+      onClick={() => setLang(l)}
+      style={{
+        fontSize: "0.65rem",
+        letterSpacing: "0.15em",
+        textTransform: "uppercase",
+        background: lang === l ? gold : "transparent",
+        color: lang === l ? "#1a1a1a" : gold,
+        border: `1px solid ${gold}`,
+        borderRadius: "2px",
+        padding: "4px 10px",
+        cursor: "pointer",
+      }}
+    >
+      {l === "en" ? "English" : "Español"}
+    </button>
+  ))}
+</div>
               <p style={{ color: "rgba(245,239,224,0.55)", fontSize: "0.9rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-                You hold something rare — a live recording made at All Souls Church in Washington DC. Enter your access code to listen and download.
-              </p>
+  {lang === "en"
+    ? "You hold something rare; a live recording made at All Souls Church in Washington DC where the original Jazz Samba Album was recorded. Enter your access code to listen and download. This password will only work for the next 10 - 30 days. Please download it to your device to keep it forever."
+    : "Tienes algo especial; una grabación en vivo hecha en la Iglesia All Souls en Washington DC donde se grabó el álbum original de Jazz Samba. Ingresa tu código de acceso para escuchar y descargar.  Esta contraseña solo funcionará durante los próximos 10 - 30 días. Por favor, descárgala en tu dispositivo para conservarla para siempre."}
+</p>
               <input
                 type="text"
                 value={input}
@@ -282,9 +314,9 @@ export default function SwingSoulSamba() {
                 <p style={{ fontSize: "0.75rem", color: "rgba(245,239,224,0.4)", letterSpacing: "0.06em", margin: 0 }}>
                   6 tracks · 40 minutes · Live at All Souls Church · 2022
                 </p>
-                <p style={{ fontSize: "0.6rem", color: "rgba(245,239,224,0.3)", letterSpacing: "0.1em", margin: "4px 0 0" }}>
-                  Press any track to begin
-                </p>
+               <p style={{ fontSize: "0.6rem", color: "rgba(245,239,224,0.3)", letterSpacing: "0.1em", margin: "4px 0 0" }}>
+  {lang === "en" ? "Press any track to begin" : "Presiona cualquier pista para comenzar"}
+</p>
               </div>
             </div>
 
@@ -356,23 +388,26 @@ export default function SwingSoulSamba() {
             <div className="sss-ornament">✦</div>
 
             {/* Special Thanks */}
-            <p style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: gold, marginBottom: "1rem" }}>
-              Special Thanks
-            </p>
+           <p style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: gold, marginBottom: "1rem" }}>
+  {lang === "en" ? "Special Thanks" : "Agradecimientos Especiales"}
+</p>
             <div style={{ marginBottom: "2rem" }}>
-              {[
-                "DC Commission on the Arts and Humanities for sponsoring this live recording.",
-                "DC Jazz Festival for their collaboration in 2020.",
-              ].map((line, i) => (
-                <div key={i} style={{
-                  display: "flex", gap: "1rem", alignItems: "flex-start",
-                  padding: "8px 0", borderBottom: "0.5px solid rgba(184,134,11,0.08)",
-                }}>
-                  <span style={{ color: gold, fontSize: "0.7rem", paddingTop: "3px", flexShrink: 0 }}>✦</span>
-                  <p style={{ fontSize: "0.9rem", color: "rgba(245,239,224,0.65)", lineHeight: 1.7, margin: 0 }}>{line}</p>
-                </div>
-              ))}
-            </div>
+  {(lang === "en" ? [
+    "DC Commission on the Arts and Humanities for sponsoring this live recording.",
+    "DC Jazz Festival for their collaboration in 2020.",
+  ] : [
+    "A la Comisión de Artes y Humanidades de DC por patrocinar esta grabación en vivo.",
+    "Al DC Jazz Festival por su colaboración en 2020.",
+  ]).map((line, i) => (
+    <div key={i} style={{
+      display: "flex", gap: "1rem", alignItems: "flex-start",
+      padding: "8px 0", borderBottom: "0.5px solid rgba(184,134,11,0.08)",
+    }}>
+      <span style={{ color: gold, fontSize: "0.7rem", paddingTop: "3px", flexShrink: 0 }}>✦</span>
+      <p style={{ fontSize: "0.9rem", color: "rgba(245,239,224,0.65)", lineHeight: 1.7, margin: 0 }}>{line}</p>
+    </div>
+  ))}
+</div>
 
             <div className="sss-ornament">✦</div>
 
@@ -383,69 +418,99 @@ export default function SwingSoulSamba() {
             <p style={{ fontSize: "0.85rem", color: "rgba(245,239,224,0.45)", fontStyle: "italic", marginBottom: "1.25rem", lineHeight: 1.7 }}>
               Notes by Ken Avis — tap each artist to read their story.
             </p>
-            <div style={{ marginBottom: "0.5rem" }}>
-              {LINER_NOTES.map((item, i) => (
-                <div key={item.artist} className="sss-liner-card">
-                  <div
-                    onClick={() => setExpandedNote(expandedNote === i ? null : i)}
-                    style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 8px" }}
-                  >
-                    <span style={{
-                      fontFamily: "'Playfair Display', Georgia, serif",
-                      fontSize: "1.05rem", color: cream, fontStyle: "italic",
-                    }}>{item.artist}</span>
-                    <span style={{
-                      color: gold, fontSize: "0.8rem",
-                      display: "inline-block",
-                      transform: expandedNote === i ? "rotate(180deg)" : "rotate(0deg)",
-                      transition: "transform 0.2s",
-                    }}>▾</span>
-                  </div>
-                  {expandedNote === i && (
-                    <div style={{ padding: "0 8px 16px" }}>
-                      <p style={{
-                        fontSize: "0.9rem", color: "rgba(245,239,224,0.7)",
-                        lineHeight: 1.85, margin: 0,
-                        borderTop: "0.5px solid rgba(184,134,11,0.15)",
-                        paddingTop: "12px",
-                      }}>
-                        {item.note}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            {/* Language Toggle */}
+<div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
+  {["en", "es"].map((l) => (
+    <button
+      key={l}
+      onClick={() => setLang(l)}
+      style={{
+        fontSize: "0.65rem",
+        letterSpacing: "0.15em",
+        textTransform: "uppercase",
+        background: lang === l ? gold : "transparent",
+        color: lang === l ? "#1a1a1a" : gold,
+        border: `1px solid ${gold}`,
+        borderRadius: "2px",
+        padding: "4px 10px",
+        cursor: "pointer",
+      }}
+    >
+      {l === "en" ? "English" : "Español"}
+    </button>
+  ))}
+</div>
+
+<div style={{ marginBottom: "0.5rem" }}>
+  {LINER_NOTES.map((item, i) => (
+    <div key={item.artist} className="sss-liner-card">
+      <div
+        onClick={() => setExpandedNote(expandedNote === i ? null : i)}
+        style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 8px" }}
+      >
+        <span style={{
+          fontFamily: "'Playfair Display', Georgia, serif",
+          fontSize: "1.05rem", color: cream, fontStyle: "italic",
+        }}>{item.artist}</span>
+        <span style={{
+          color: gold, fontSize: "0.8rem",
+          display: "inline-block",
+          transform: expandedNote === i ? "rotate(180deg)" : "rotate(0deg)",
+          transition: "transform 0.2s",
+        }}>▾</span>
+      </div>
+      {expandedNote === i && (
+        <div style={{ padding: "0 8px 16px" }}>
+          <p style={{
+            fontSize: "0.9rem", color: "rgba(245,239,224,0.7)",
+            lineHeight: 1.85, margin: 0,
+            borderTop: "0.5px solid rgba(184,134,11,0.15)",
+            paddingTop: "12px",
+          }}>
+            {lang === "en" ? item.noteEN : item.noteES}
+          </p>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
 
             <div className="sss-ornament">✦</div>
 
             {/* How to Download */}
-            <p style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: gold, marginBottom: "1rem" }}>
-              How to Download
-            </p>
-            <p style={{ fontSize: "0.85rem", color: "rgba(245,239,224,0.45)", fontStyle: "italic", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-              Best on your computer. Once downloaded, drag into Apple Music, Spotify, or any music player.
-            </p>
-            <div style={{ marginBottom: "2rem", display: "flex", flexDirection: "column", gap: "0.85rem" }}>
-              {[
-                ["I",   "Click Download Album below. The zip file will save to your device."],
-                ["II",  "Open the zip. You'll find 6 tracks numbered 01–07."],
-                ["III", "Mac: double-click the zip → drag into Apple Music. Windows: right-click → Extract All → drag into library."],
-                ["IV",  "Track names, artwork, and album info are embedded and will appear automatically."],
-              ].map(([num, text]) => (
-                <div key={num} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
-                  <span style={{
-                    fontSize: "0.7rem", color: gold, paddingTop: "2px", minWidth: "22px",
-                    fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic",
-                  }}>{num}</span>
-                  <p style={{ fontSize: "0.85rem", color: "rgba(245,239,224,0.55)", lineHeight: 1.8, margin: 0 }}>{text}</p>
-                </div>
-              ))}
-            </div>
-
+         {/* How to Download */}
+<p style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: gold, marginBottom: "1rem" }}>
+  {lang === "en" ? "How to Download" : "Cómo Descargar"}
+</p>
+<p style={{ fontSize: "0.85rem", color: "rgba(245,239,224,0.45)", fontStyle: "italic", lineHeight: 1.8, marginBottom: "1.25rem" }}>
+  {lang === "en"
+    ? "Best on your computer. Once downloaded, drag into Apple Music, Spotify, or any music player."
+    : "Mejor en tu computadora. Una vez descargado, arrastra a Apple Music, Spotify, o cualquier reproductor de música."}
+</p>
+<div style={{ marginBottom: "2rem", display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+  {(lang === "en" ? [
+    ["I",   "Click Download Album below. The zip file will save to your device."],
+    ["II",  "Open the zip. You'll find 6 tracks numbered 01–07."],
+    ["III", "Mac: double-click the zip → drag into Apple Music. Windows: right-click → Extract All → drag into library."],
+    ["IV",  "Track names, artwork, and album info are embedded and will appear automatically."],
+  ] : [
+    ["I",   "Haz clic en Descargar Álbum abajo. El archivo zip se guardará en tu dispositivo."],
+    ["II",  "Abre el zip. Encontrarás 6 pistas numeradas del 01 al 07."],
+    ["III", "Mac: doble clic en el zip → arrastra a Apple Music. Windows: clic derecho → Extraer todo → arrastra a tu biblioteca."],
+    ["IV",  "Los nombres de las pistas, la portada y la información del álbum están incluidos y aparecerán automáticamente."],
+  ]).map(([num, text]) => (
+    <div key={num} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
+      <span style={{
+        fontSize: "0.7rem", color: gold, paddingTop: "2px", minWidth: "22px",
+        fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic",
+      }}>{num}</span>
+      <p style={{ fontSize: "0.85rem", color: "rgba(245,239,224,0.55)", lineHeight: 1.8, margin: 0 }}>{text}</p>
+    </div>
+  ))}
+</div>
             {/* Download buttons */}
             <a href={`${R2_BASE}/swing-soul-samba.zip`} download="Swing-Soul-Samba.zip" className="sss-btn-gold">
-              Download Album
+              Download/Descargar Album
             </a>
             <a href="/liner-notes-en.pdf" download className="sss-btn-outline">
               Download Liner Notes (English)
